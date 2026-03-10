@@ -1,0 +1,58 @@
+document.addEventListener('DOMContentLoaded', function () {
+    if (document.getElementById('biodata-form')) {
+        document.getElementById('biodata-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const phone = document.getElementById('phone').value;
+            const biodata_name = document.getElementById('biodata_name').value;
+            const payment_date = document.getElementById('payment_date').value;
+            const nonce = document.querySelector('input[name="biodata_nonce"]').value;
+            const order = document.getElementById('order').value;
+            const dob = document.getElementById('dob').value;
+            const responseMessage = document.getElementById('response-message');
+
+        
+
+            // // Client-side validation
+            // if (!/^\d{10}$/.test(phone)) {
+            //     responseMessage.textContent = 'Invalid phone number. Must be 10 digits.';
+            //     responseMessage.style.color = 'red';
+            //     return;
+            // }
+
+            // Use fetch API to send the data
+            fetch(ajax_object.ajax_url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    action: 'handle_download_biodata_form',
+                    phone: phone,
+                    biodata_name: biodata_name,
+                    biodata_nonce: nonce,
+                    payment_date: payment_date,
+                    order: order,
+                    dob: dob
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log(data.data)
+                        responseMessage.textContent = data.data;
+                        responseMessage.style.color = 'green';
+                    } else {
+                        responseMessage.textContent = data.data;
+                        responseMessage.style.color = 'red';
+                    }
+                })
+                .catch(error => {
+                    responseMessage.textContent = 'An error occurred. Please try again.';
+                    responseMessage.style.color = 'red';
+                    console.error('Error:', error);
+                });
+        });
+    }
+
+});

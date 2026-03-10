@@ -1,0 +1,61 @@
+var myshadibiodatacssscroll  = myshadibiodatacssscroll ;
+function cssOnScroll () {
+    if (typeof cssloaded == 'undefined') {
+        for (var key in myshadibiodatacssscroll) {
+            var value = myshadibiodatacssscroll[key];
+            var moduleCss = document.createElement('link');
+            moduleCss.rel = 'stylesheet';
+            moduleCss.href = myshadibiodata.directory_url+'/assets/css/'+value+'.css';
+            moduleCss.type = 'text/css';
+            moduleCss.media = 'all';
+            document.getElementsByTagName('head')[0].appendChild(moduleCss);
+        }
+        //splide sscript
+        var Width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if (Width < 767) {
+            var splideCss = document.createElement('link');
+            splideCss.rel = 'stylesheet';
+            splideCss.href = myshadibiodata.directory_url+'/assets/css/splide-core.min.css';
+            splideCss.type = 'text/css';
+            splideCss.media = 'all';
+            document.getElementsByTagName('head')[0].appendChild(splideCss);
+        }
+        splideScript = document.createElement('script');
+        splideScript.src = myshadibiodata.directory_url+'/assets/js/splide.min.js';
+        splideScript.setAttribute('async', 'true');
+        document.head.appendChild(splideScript);
+        cssloaded = 1;
+    }
+    if (typeof splideCreated == 'undefined') {
+        if (typeof Splide == 'function') {
+            var Width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            if (Width < 767) {
+                var sliders = document.querySelectorAll('.splide');
+                for (var i = 0; i < sliders.length; i++) {
+                    new Splide(sliders[i],{
+                        type: 'loop',
+                        start: 0,
+                        perPage: 1.5,
+                        perMove:1,
+                        gap:'1rem',
+                        arrows:false,
+                        pagination:false,
+                        speed:1000
+                        }).mount()
+                }
+                splideCreated = 1;
+            }
+        }
+    }
+}
+document.addEventListener('scroll', function() {
+    cssOnScroll();
+
+})
+var Width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+if (Width > 767) {
+    document.addEventListener('mousemove', function() {
+        cssOnScroll();
+    })
+}
+

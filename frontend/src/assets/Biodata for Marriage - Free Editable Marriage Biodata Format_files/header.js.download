@@ -1,0 +1,122 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Mobile menu toggle
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const header = document.querySelector("header");
+
+  if (mobileMenu && header) {
+    mobileMenu.addEventListener("click", function () {
+      header.classList.toggle("active");
+    });
+  }
+
+  // Scroll behavior for header
+  window.addEventListener("scroll", function () {
+    const scroll = window.scrollY; // Use scrollY instead of pageYOffset
+    const header = document.querySelector("header");
+    if (header == null) return false;
+    if (scroll >= 100) {
+      header.classList.add("white-header");
+    } else {
+      header.classList.remove("white-header");
+    }
+  });
+});
+
+// scroll to template slider on mobile
+const tempLinks = document.querySelectorAll(".temp-scroll");
+tempLinks.forEach(function (link) {
+  link.addEventListener("click", function (event) {
+    event.preventDefault();
+    const hrefValue = link.getAttribute("data-slide");
+
+    //add class to scroll item
+    const myElement = document.getElementById("template-slider");
+    myElement.className = "template-slider " + hrefValue;
+  });
+});
+
+// Color palette
+const colorNames = document.querySelectorAll(".color-name");
+colorNames.forEach(function (color) {
+  color.addEventListener("mouseover", function (event) {
+    const colorImage = color.getAttribute("data-src");
+    const templateVariant = color.getAttribute("data-variant");
+    const templateId = color.getAttribute("data-id");
+    const closestTemplateImage =
+      color.parentElement.parentElement.parentElement;
+    const variantImageDiv = document.querySelector('.variantImage');
+
+    colorNames.forEach(function (otherColor) {
+      if (otherColor !== color) {
+        otherColor.classList.remove("active");
+      }
+    });
+    color.classList.add("active");
+
+    if (closestTemplateImage || variantImageDiv != null) {
+      if (templateId.length && templateVariant.length) {
+        var changeTemplate = document.getElementsByClassName('template-image-changes');
+
+        if (changeTemplate.length > 0) {
+          const imgElement = closestTemplateImage.querySelector("div img");
+
+          if (imgElement) {
+            imgElement.src = colorImage;
+          }
+
+          if (variantImageDiv != null) {
+            const variantImg = variantImageDiv.querySelector("div img");
+            if (variantImg) {
+              variantImg.src = colorImage;
+            }
+          }
+
+          color.parentElement.parentElement.parentElement.querySelector(
+            ".template-image-changes"
+          ).dataset.variant = templateVariant;
+
+          color.parentElement.parentElement.parentElement.querySelector(
+            ".template-image-changes"
+          ).dataset.id = templateId;
+
+        } else {
+          const imgElement = closestTemplateImage.querySelector("a img");
+          if (imgElement) {
+            imgElement.src = colorImage;
+          }
+
+          if (variantImageDiv != null) {
+            const variantImg = variantImageDiv.querySelector("div img");
+            if (variantImg) {
+              variantImg.src = colorImage;
+            }
+          }
+
+
+          if (window.matchMedia("(min-width: 768px)").matches) {
+            color.parentElement.parentElement.parentElement.querySelector(
+              "a"
+            ).href = `/make-your-biodata?id=${templateId}&variant=${templateVariant}`;
+          }
+          if (window.matchMedia("(max-width: 768px)").matches) {
+            color.parentElement.parentElement.parentElement.querySelector(
+              ".creat-btn-mobile"
+            ).href = `/make-your-biodata?id=${templateId}&variant=${templateVariant}`;
+          }
+          if (document.querySelector('.single-template-url') != null) {
+            document.querySelector('.single-template-url').href = `/make-your-biodata?id=${templateId}&variant=${templateVariant}`;
+          }
+        }
+
+      }
+    }
+  });
+});
+// Get the hero-button element
+var heroButton = document.getElementById('hero-button');
+if (heroButton) {
+  heroButton.addEventListener('click', function () {
+    var url = heroButton.getAttribute('data-href');
+    window.location.href = url;
+  });
+}

@@ -1,0 +1,38 @@
+document.addEventListener("DOMContentLoaded", function () {
+  let loginPopupTrigger = document.querySelector(".login-popup-trigger");
+  let loginPopup = document.getElementById("login-popup");
+  let closePopupButton = document.getElementById("close-popup");
+
+  // Function to show the login popup
+  function showLoginPopup() {
+    loginPopup.style.display = "block";
+  }
+
+  // Function to close the login popup
+  function closeLoginPopup() {
+    loginPopup.style.display = "none";
+    var body = document.body;
+    body.classList.remove("show-login-popup");
+  }
+
+  if (loginPopupTrigger) {
+    // Event listener to open the login popup
+    loginPopupTrigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      showLoginPopup();
+    });
+  }
+
+  // Event listener to close the login popup
+  if (closePopupButton) {
+    closePopupButton.addEventListener("click", function () {
+      closeLoginPopup();
+    });
+  }
+});
+
+
+
+
+
+

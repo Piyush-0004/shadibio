@@ -1,0 +1,73 @@
+.tips-section{
+    margin: 0rem 1rem 0rem 1rem;
+}
+.tips{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: stretch;
+    margin: 0 -.5rem;
+    margin-bottom: 5rem;
+}
+
+.tips li{
+    list-style-type: none;
+    flex:1;
+    text-align: center;
+    padding: 0 .5rem;
+    
+}
+.tips .icon{
+    width: 4rem;
+    height: 4rem;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 5.5rem;
+    margin-bottom: .5rem;
+    background-color: var(--gray);
+}
+
+.tips .tips-item{
+    padding: 1rem;
+    border-radius: 0.625rem;
+    height: 100%;
+    color: #fff;
+    transition: 300ms all;
+    z-index: 1;
+    position: relative;
+}
+
+.tips .tips-item h3,
+.tips .tips-item p{
+    color: #fff;
+}
+
+@media only screen and (min-width: 1280px){
+    .tips .tips-item{
+        padding: 2rem;
+    }
+    .tips{
+        margin: 0 -1rem; 
+        margin-bottom: 0rem;
+    }
+    .tips li{
+        padding: 0 1rem;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .tips{
+        display: block;
+        margin-bottom: 0rem;
+    }
+    .tips li:nth-child(2) .tips-item{
+        transform: scale(1);
+        z-index: 1;
+    }
+    .tips li{
+        padding-bottom: 0rem;
+    }
+    .tips li:last-child{
+        padding-bottom: 0;
+    }
+}

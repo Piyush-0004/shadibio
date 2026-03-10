@@ -1,0 +1,19 @@
+.faq{
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 0;
+}
+.faq li{
+    list-style-type: none;
+    background-color: #fff;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.faq li p:last-child{
+    margin-bottom: 0;
+}
+
+.faq-section{
+    position: relative;
+}

@@ -1,0 +1,183 @@
+.list ul{
+    padding: 1rem;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.list{
+    padding: 2.5rem 1rem 2.5rem 1rem;
+}
+.list-new ul{
+    padding: 1rem;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.list-new{
+    padding: 2rem 0rem 0rem 1rem;
+}
+/* do donot */
+
+.do-dont-wrap{
+    display: block;
+}
+
+.do-dont-wrap ul{
+    padding: 0;
+    margin: 0;
+}
+
+.do-dont-wrap ul li{
+    list-style-type: none;
+    position: relative;
+    padding: 1rem;
+    background-color: #f7f7f7;
+    margin-bottom: 1rem;
+}
+.do-dont-wrap ul li span{
+    position: absolute;
+    top: 0;
+    left: -1rem;
+    height: 30px;
+}
+
+.do-dont-wrap ul li p{
+    font-size: .875rem;
+    margin: 0;
+}
+.do-dont-wrap > div{
+    padding: 0 1rem;
+    margin-bottom: 3rem;
+}
+.do-dont-wrap > div:last-child{
+    margin-bottom: 0;
+}
+.do-dont-wrap ul li span{
+    transform: translateY(-50%);
+}
+
+
+.do-dont-table{
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+.do-dont-table td,
+.do-dont-table th{
+    border: 1pt solid rgb(221, 221, 221);
+    width: 50%;
+    text-align: left;
+    padding: .5rem .5rem;
+    vertical-align: top;
+}
+.do-dont-table td{
+    font-size: .875rem;
+}
+.do-dont-table th span{
+    display: inline-block;
+    vertical-align: middle;
+    height: 28px;
+}
+.do-dont-table tr:nth-child(odd) td{
+    background-color: #f7f7f7;
+}
+
+.cta-banner .container {
+    margin-bottom: 0;
+}
+.cta-banner h2{
+    font-size: 1.8rem;
+    line-height: 2rem;
+    color: #964900;
+    position: relative;
+}
+.cta-banner p{
+    color: #964900;
+    position: relative;
+}
+.cta-banner{
+    text-align: center;
+    position: relative;
+}
+
+.cta-banner::before{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f2f1e9;
+    background-image: url('/wp-content/themes/myshadibiodata/assets/images/golden-texture.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
+    opacity: .1;
+}
+
+.cta-banner ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.cta-banner ul li{
+    display: block;
+    padding: 0 .25rem;
+}
+
+.cta-banner ul li a{
+    display: inline-block;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: none;
+    background-color: #D35458;
+    color: #fff;
+    height: 3.5rem;
+    font-size: 1rem;
+    padding: 0 1.4rem;
+    line-height: 3.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    transition: 0.25s;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: .5rem;
+}
+.cta-banner ul li a:hover{
+    box-shadow: 0 0.5em 0.5em -0.4em var(--primary);
+    transform: translateY(-0.25em);
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    .do-dont-wrap{
+        display: flex;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .do-dont-wrap > div{
+        padding-right: 2rem;
+        margin: 0;
+        flex:1;
+    }
+    .do-dont-wrap > div:last-child{
+        padding: 0;
+    }
+    .do-dont-wrap ul li span{
+        top: 0;
+        transform: none;
+    }
+    .list-new {
+        padding: 2.5rem 0rem 0rem 1rem;
+    }
+
+}
+
+@media only screen and (max-width: 768px){
+    .cta-banner ul li a{
+        height: 2.5rem;
+        line-height: 2.5rem;
+    }
+}
